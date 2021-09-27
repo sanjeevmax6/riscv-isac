@@ -414,7 +414,12 @@ def alternate(var, size, signed=True, fltr_func=None,scale_func=None):
     return coverpoints
     #coverpoints = [var + ' == ' + str(d) for d in dataset]
     #return [(coverpoint,"Alternate") for coverpoint in coverpoints]
-
+    
+def xlenlim(var, limit):
+    coverpoints = []
+    for i in range(limit):
+        coverpoints.append((var + '==' + str(i),'xlenLimit: '+str(hex(i))))
+    return coverpoints 
 
 def expand_cgf(cgf_files, xlen):
     '''
@@ -446,4 +451,3 @@ def expand_cgf(cgf_files, xlen):
                                 for cp,comment in exp_cp:
                                     cgf[labels][label].insert(1,cp,coverage,comment=comment)
     return dict(cgf)
-
